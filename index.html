@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contador de Caracteres</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #fff;
+            color: #333; 
+            transition: background-color 0.5s, color 0.5s;
+        }
+        textarea {
+            width: 80%;
+            height: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        #charCount {
+            font-size: 18px;
+        }
+        #darkModeButton {
+            background-color: #333; 
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        #darkModeButton:hover {
+            background-color: #555;
+        }
+        #imageContainer {
+            margin: 20px auto;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contador de Caracteres</h1>
+    <textarea id="textArea" placeholder="Digite ou cole seu texto aqui"></textarea>
+    <p id="charCount">Número de caracteres: 0</p>
+    
+    <button id="darkModeButton" onclick="toggleDarkMode()">Modo Escuro</button>
+    
+
+    <script>
+        const textArea = document.getElementById('textArea');
+        const charCount = document.getElementById('charCount');
+        const darkModeButton = document.getElementById('darkModeButton');
+        let isDarkMode = false;
+
+        function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+            document.body.style.backgroundColor = isDarkMode ? '#333' : '#fff';
+            document.body.style.color = isDarkMode ? '#fff' : '#333';
+            textArea.style.backgroundColor = isDarkMode ? '#444' : '#f2f2f2';
+            textArea.style.color = isDarkMode ? '#fff' : '#333';
+            darkModeButton.style.backgroundColor = isDarkMode ? '#555' : '#333';
+            darkModeButton.style.color = isDarkMode ? '#fff' : '#fff';
+        }
+
+        textArea.addEventListener('input', function () {
+            const text = textArea.value;
+            const count = text.length;
+            charCount.textContent = `Número de caracteres: ${count}`;
+        });
+    </script>
+</body>
+</html>
